@@ -1,4 +1,5 @@
 import json
+from typing import Any
 from xml.etree.ElementTree import ElementTree
 import easygui
 import ezdxf
@@ -40,8 +41,18 @@ TEXT_HEIGHT = 0.01
 LINE_FACTOR = 1.4
 LEADER_LINE = Vec2(1, .2)
 BLOCK_TEXT_HEIGHT = 0.08
+OFFSET_RIGHT = 0.005
+OFFSET_UP = 0.004
 
-# What text do you want beside a recorded point depending on it's point_code
+
+M_LEADER_LANDING_GAP = 0.4
+M_LEADER_DOGLEG_LENGTH = 0.5
+M_LEADER_ARROW_SIZE = 0.2
+M_LEADER_SCALE = 1
+M_LEADER_TEXT_HEIGHT = 0.3
+M_LEADER_GAP = 0.1
+
+# What text do you want beside a recorded point depending on its point_code
 POINTCODE_TO_TEXT = {
     'wmf_av': 'A.V.',
     'wmf_bb': 'BB',
@@ -62,37 +73,35 @@ POINTCODE_TO_TEXT = {
 
 
 # this adds a multileader with a single arrow/text.
-def create_multileader_with_text(msp, location, point_code):
+def create_multileader_with_text(msp_ref, location, point_code):
     lead_text = ""
     if point_code in POINTCODE_TO_TEXT:
         lead_text = POINTCODE_TO_TEXT[point_code]
 
     for angle in [15]:
-        ml_builder = msp.add_multileader_mtext("EZDXF")
-        ml_builder.set_connection_properties(landing_gap=0.4, dogleg_length=.5)
-        ml_builder.set_arrow_properties(name=ARROWS.closed_filled, size=0.2)
+        ml_builder = msp_ref.add_multileader_mtext("EZDXF")
+        ml_builder.set_connection_properties(landing_gap=M_LEADER_LANDING_GAP,
+                                             dogleg_length=M_LEADER_DOGLEG_LENGTH)
         ml_builder.quick_leader( f"{lead_text}",
             target=location,
             segment1=Vec2.from_deg_angle(angle, 1),
         )
-        ml_builder.set_arrow_properties(name=ARROWS.closed_blank, size=0.4)
+        ml_builder.set_arrow_properties(name=ARROWS.closed_blank, size=M_LEADER_ARROW_SIZE)
 
 
-def create_wm_block(doc_ref, block_name, block_text):
+def create_block(block_name, block_text):
     """
     Creates and inserts a new DXF block into the document object.
 
-    :param doc_ref: The DXF document object to insert the block.
     :param block_name: The name of the block.
     :param block_text: Text to be inserted into the block
     """
-
-    # Create a new block or retrieve it if it already exists
+    global doc
     try:
-        block = doc_ref.blocks.new(name=block_name)
+        block = doc.blocks.new(name=block_name)
     except ezdxf.DXFError:
         print(f"Block '{block_name}' already exists.")
-        block = doc_ref.blocks.get(block_name)
+        block = doc.blocks.get(block_name)
 
     # Add a circle
     center = (0, 0)
@@ -127,31 +136,9 @@ def create_wm_block(doc_ref, block_name, block_text):
     path2.add_line(start=(0, -radius), end=center)  # Line back to center
 
 
-def insert_block(msp, block_name, locations):
+def insert_block(msp_ref, block_name, locations):
     for location in locations:
-        msp.add_blockref(block_name, location)
-
-
-def hex_to_rgb(hex_code):
-    """
-    Converts a hexadecimal color code to an RGB tuple.
-
-    Args:
-        hex_code (str): The hex color code (e.g., "#FFFFFF" or "FFFFFF").
-
-    Returns:
-        tuple: A tuple containing the RGB values (red, green, blue).
-    """
-    # Remove the leading '#' if it exists
-    hex_code = hex_code.lstrip('#')[2:]
-
-    # Validate if the string has the correct length
-    if len(hex_code) != 6:
-        raise ValueError("Invalid hexadecimal color code. Must be 6 characters long.")
-
-    # Convert hex to RGB
-    rgb = tuple(int(hex_code[i:i + 2], 16) for i in (0, 2, 4))
-    return rgb
+        msp_ref.add_blockref(block_name, location)
 
 
 def get_layers(file_path):
@@ -169,7 +156,7 @@ def get_layers(file_path):
         are dictionaries containing each layer's properties and their values.
     :rtype: Dict[str, Dict[str, Optional[str]]]
     """
-    layers = {}
+    layers_ref = {}
     tree = ElementTree()
     tree.parse(source=file_path)
     root = tree.getroot()
@@ -184,40 +171,33 @@ def get_layers(file_path):
                         # name_value = ""
                         if layer_property == 'Name':
                             name_value = sub_elem.text
-                            layers.setdefault(name_value, {})
+                            layers_ref.setdefault(name_value, {})
                         else:
                             layer_values.setdefault(layer_property, sub_elem.text)
-                    layers[name_value].update(layer_values)
-    return layers
+                    layers_ref[name_value].update(layer_values)
+    return layers_ref
 
 
-def process_code(input_string: str, line_codes, point_codes) -> (bool,str,int):
+def process_code(input_string: str, line_codes_ref, point_codes_ref) -> (bool, str, int):
     pattern = r"([a-zA-Z]+[a-z_A-Z0-9]*[a-zA-Z])(\d+)?$"
     found = False
-    point_type = "Unknown"
-    # Match the pattern
+    point_type = "Unknown" # default if your pointcode is not defined in Library
     match = re.match(pattern, input_string)
-    code = False
-    differentiator = False
-    if input_string == "bin":
-        print("bin")
+    code = False # the point code extracted from the (from kb3 => get kb)
+    differentiator = False # the number of this pointcode, for separating lines (from kb3 => get 3)
     if match:
-
         code = match.group(1)  # Letters or alphanumeric code
         differentiator = match.group(2)  # Number at the end
-        if code in line_codes:
+        if code in line_codes_ref:
             found = True
             point_type = "Line"
-
-        if code in point_codes:
+        if code in point_codes_ref:
             found = True
             point_type = "Point"
-
-
         if differentiator:
             differentiator = int(differentiator)
         else:
-            if code in line_codes:
+            if code in line_codes_ref:
                 differentiator = -1
     else:
         print("The string does not match the expected format.")
@@ -225,29 +205,22 @@ def process_code(input_string: str, line_codes, point_codes) -> (bool,str,int):
         print(f"code:{code}, differentiator:{differentiator}, point_type:{point_type}")
         return True, code, differentiator, point_type
     else:
-        return False,"sprl",1, point_type
+        return False,"sprl", 1, point_type
 
 
 def get_codes(file_path):
     """
-    Extracts point and line feature definitions and their attributes from an XML file.
-
-    This function parses an XML file at the specified file path to fetch and organize
-    the feature definitions for points and lines. The data is structured into two
-    separate dictionaries where the keys are the 'Code' attributes and the values
-    are the respective dictionaries of attributes for each feature.
+    Extracts point and line feature definitions and their attributes from a Trimble Library FXL file.
 
     :param file_path: Path to the XML file that contains the feature definitions.
     :type file_path: str
-    :return: A tuple containing two dictionaries: the first for point feature
-             definitions and the second for line feature definitions. Both
-             dictionaries map feature codes to their respective attribute mappings.
-    :rtype: Tuple[Dict[str, Dict[str, str]], Dict[str, Dict[str, str]]]
-
+    :return: A tuple containing three dictionaries: the first for point feature
+             definitions and the second for line feature definitions, the third maps pointcodes to their target layers.
+    :rtype: Tuple[Dict[str, Dict[str, str]], Dict[str, Dict[str, str]], Dict[str, str]]
     """
-    point_code_dict = {}
-    line_code_dict = {}
-    code_layer_map = {}
+    point_code_dict_ref = {}
+    line_code_dict_ref = {}
+    code_layer_map_ref = {}
     tree = ElementTree()
     tree.parse(file_path)
     root = tree.getroot()
@@ -256,16 +229,16 @@ def get_codes(file_path):
             for gchild in child:
                 if f'{namespace}PointFeatureDefinition' in gchild.tag:
                     point_code = gchild.attrib.get('Code')
-                    point_code_dict.setdefault(point_code, gchild.attrib)
-                    code_layer_map.setdefault(point_code, gchild.attrib.get('Layer'))
+                    point_code_dict_ref.setdefault(point_code, gchild.attrib)
+                    code_layer_map_ref.setdefault(point_code, gchild.attrib.get('Layer'))
                 if f'{namespace}LineFeatureDefinition' in gchild.tag:
                     line_code = gchild.attrib.get('Code')
-                    line_code_dict.setdefault(line_code, gchild.attrib)
-                    code_layer_map.setdefault(line_code, gchild.attrib.get('Layer'))
-    return point_code_dict, line_code_dict, code_layer_map
+                    line_code_dict_ref.setdefault(line_code, gchild.attrib)
+                    code_layer_map_ref.setdefault(line_code, gchild.attrib.get('Layer'))
+    return point_code_dict_ref, line_code_dict_ref, code_layer_map_ref
 
 
-def get_survey(file_path, point_codes, line_codes):
+def get_survey(file_path, point_codes_ref, line_codes_ref):
     global needed_pcodes
     fixed_columns = ["PointNumber", "Easting", "Northing", "Height", "Point_code"]
 
@@ -274,39 +247,32 @@ def get_survey(file_path, point_codes, line_codes):
         with open(file_path, mode='r', encoding='utf-8', newline='') as csv_file:
             reader = csv.reader(csv_file)
 
-            all_dicts = {"Line":{}, "Point":{}, "Unknown":{}}
+            all_pts_map = {"Line":{}, "Point":{}, "Unknown":{}}
             for row in reader:
-                point_type = "Unknown"
-                # Always use the first 5 columns as fixed fields
-                row_dict = {}
-                row_dict = {fixed_columns[i]: row[i] for i in range(min(len(row), 5))}
+                row_dict: dict[str, Any] = {fixed_columns[i]: row[i] for i in range(min(len(row), 5))} # map <=5 cols
                 point_code = row_dict.get("Point_code", False)
-                if point_code:
-                    success, pcode, sequence, point_type = process_code(row_dict['Point_code'], line_codes, point_codes)
-                    row_dict["Point_code"] = f"{pcode}"
+                if point_code: # the first 2 csv rows and further temp stations have no point code, so check it's real
+                    success, pcode, sequence, point_type = process_code(row_dict['Point_code'], line_codes_ref, point_codes_ref)
+                    row_dict["Point_code"] = f"{pcode}" # add these to row_dict so we can find required layer later
                     row_dict["Sequence"] = f"{sequence}"
-
-                    sequence_dict = {f"{sequence}": row_dict}
-                    # row_dict["Sequence"] = f"{sequence}"
                     if pcode not in needed_pcodes:
                         needed_pcodes.append(pcode)
-                    # For the remaining columns, assume key-value pairs
-                    # Start handling dynamic attributes after the fixed columns
-                    if len(row) > 5:
-                        attributes = row[5:]  # Everything after the fixed columns
+                    if len(row) > 5: # anything after col5 are attribute records
+                        attributes = row[5:]
                         attributes_dict = {}
-                        # Process key-value pairs
-                        for j in range(0, len(attributes), 2): # Step by 2 (key, value)
+                        # Process key-value pairs or just (key: "")
+                        for j in range(0, len(attributes), 2):
                             key = attributes[j]
-                            if j + 1 < len(attributes):  # Ensure a value exists for the key
+                            if j + 1 < len(attributes):  # check if a value exists for the key or make one
                                 value = attributes[j + 1]
                             else:
                                 value = ""
                             attributes_dict[key] = value
 
                         row_dict["attrib"] = attributes_dict
-                    all_dicts[point_type].setdefault(row_dict['Point_code'], {}).setdefault(sequence, []).append(row_dict)
-            return all_dicts
+                    # example structure all_pts_map['Line']['bb']['1']=[{point0 details},{point2 details}]  list of dicts
+                    all_pts_map[point_type].setdefault(row_dict['Point_code'], {}).setdefault(sequence, []).append(row_dict)
+            return all_pts_map
     except FileNotFoundError:
         print(f"Error: Survey File '{file_path}' not found.")
         return None
@@ -316,18 +282,18 @@ def get_survey(file_path, point_codes, line_codes):
 
 
 def add_attrib_text(point, point_code , layer_name="Points"):
-    global msp
+    global msp # get the global modelspace reference
     x = float(point.get("Easting", 0))
     y = float(point.get("Northing", 0))
     z = float(point.get("Height", 0))
 
-    if "attrib" in point:
+    if "attrib" in point: # if there are attributes, add a text item for each one, spaced rising up to right of point
         count = 0
         for attrib_key, attrib_value in point["attrib"].items():
             msp.add_mtext(
                 text=f"\\H0.5x;{attrib_key.split(':')[1]}: \\H1x;{attrib_value}",
                 dxfattribs={
-                    "insert": (x + .005, y + .004 + TEXT_HEIGHT * count * LINE_FACTOR),
+                    "insert": (x + OFFSET_RIGHT, y + OFFSET_UP + TEXT_HEIGHT * count * LINE_FACTOR),
                     "char_height": TEXT_HEIGHT,
                     "attachment_point": 7,
                 }
@@ -340,21 +306,21 @@ def add_attrib_text(point, point_code , layer_name="Points"):
         sequence_text = ""
     msp.add_text(text=f"Code: {point_code}{sequence_text}",
                  dxfattribs={
-                     "insert": (x + .005, y - 1 * TEXT_HEIGHT * LINE_FACTOR),  # Insertion point (x, y)
+                     "insert": (x + OFFSET_RIGHT, y - 1 * TEXT_HEIGHT * LINE_FACTOR),  # Insertion point (x, y)
                      "height": TEXT_HEIGHT,
                      "rotation": 0,
-                     "layer": f"Point Code"
+                     "layer": "Point Code"
                  })
     msp.add_text(text=f"Z = {point["Height"]}",
                  dxfattribs={
-                     "insert": (x + .005, y - 2 * TEXT_HEIGHT * LINE_FACTOR),  # Insertion point (x, y)
+                     "insert": (x + OFFSET_RIGHT, y - 2 * TEXT_HEIGHT * LINE_FACTOR),  # Insertion point (x, y)
                      "height": TEXT_HEIGHT,
                      "rotation": 0,
                      "layer": "Point Height"
                  })
     msp.add_text(text=f"PtNum: {point["PointNumber"]}",
                  dxfattribs={
-                     "insert": (x + .005, y - 3 * TEXT_HEIGHT * LINE_FACTOR),
+                     "insert": (x + OFFSET_RIGHT, y - 3 * TEXT_HEIGHT * LINE_FACTOR),
                      # Insertion point (x, y)
                      "height": TEXT_HEIGHT,
                      "rotation": 0,
@@ -362,20 +328,29 @@ def add_attrib_text(point, point_code , layer_name="Points"):
                  })
 
 
-def create_dxf(output_dxf_path, layers, survey, point_codes, point_codes_dict, line_codes, line_codes_dict, needed_layers):
-    # doc = ezdxf.new(dxfversion="R2010")
-    doc.header["$PDMODE"] = 34  # Example: Circle with cross (code below explains `PDMODE` values)
-    doc.header["$PDSIZE"] = 0.2  # Size of the point (can be negative for a scaled size)
+def create_blocks():
+    global needed_pcodes
+    # create_block(block_name='AV_Block', block_text='AV')
+    for needed_pcode in needed_pcodes:
+        if needed_pcode in POINTCODE_TO_TEXT:
+            block_text = POINTCODE_TO_TEXT[needed_pcode]
+            block_name = f"{block_text}_Block"
+            create_block(block_name=block_name, block_text=block_text)
+
+
+def create_dxf(output_dxf_path, layers, survey, point_codes_dict, line_codes_dict, needed_layers):
+    doc.header["$PDMODE"] = 34  # sets point style
+    doc.header["$PDSIZE"] = 0.2 # sets point size as fixed
     if "OpenSans" not in doc.styles:
         doc.styles.add("OpenSans", font="OpenSans.ttf")
 
-    create_wm_block(doc, 'AV_Block', 'AV')
-
+    #create_block(block_name='AV_Block', block_text='AV')
+    create_blocks()
     mleaderstyle = doc.mleader_styles.duplicate_entry("Standard", "EZDXF")
     mleaderstyle.set_mtext_style("OpenSans")
-    mleaderstyle.dxf.scale= 1
-    mleaderstyle.dxf.char_height = 0.3
-    mleaderstyle.dxf.landing_gap_size = 0.1  # Adjust gap between the leader line and the text
+    mleaderstyle.dxf.scale= M_LEADER_SCALE
+    mleaderstyle.dxf.char_height = M_LEADER_TEXT_HEIGHT
+    mleaderstyle.dxf.landing_gap_size = M_LEADER_GAP  # Adjust gap between the leader line and the text
 
     # msp = doc.modelspace()
     doc.layers.add("Point Code", color=1)  # Create a new layer for points
@@ -420,7 +395,8 @@ def create_dxf(output_dxf_path, layers, survey, point_codes, point_codes_dict, l
         locations = []
         needs_block = False
         if point_code in POINTCODE_TO_TEXT:
-                needs_block = True
+            needs_block = True
+            block_name = f"{POINTCODE_TO_TEXT[point_code]}_Block"
         print(point_code)
         layer_name = point_codes_dict[point_code]['Layer']
         for key, value in survey['Point'][point_code].items():
@@ -430,37 +406,10 @@ def create_dxf(output_dxf_path, layers, survey, point_codes, point_codes_dict, l
                     lead_point = Vec2(float(point.get("Easting", 0)), float(point.get("Northing", 0)))
                     create_multileader_with_text(msp, lead_point, point_code=point_code)
                 add_attrib_text(point, point_code, layer_name=layer_name)
-        insert_block(msp, block_name='AV_Block', locations=locations)
-
-
-
-    # Save the DXF to a file
+                if needs_block:
+                    insert_block(msp, block_name=block_name, locations=locations)
     doc.saveas(output_dxf_path)
 
-
-def group_line_points(survey_data, line_code_dict):
-    """
-    Groups survey points into connected polylines based on line code
-    and sequence (differentiator).
-    """
-    polylines = {}
-
-    # Iterate through survey data to group points
-    for point_code, points in survey_data.items():
-        for point in points:
-            success, code, sequence, point_type = process_code(point_code, line_code_dict.keys(), [])
-            if success and code in line_code_dict:  # Check if the code is in line_codes
-                # Group points by line code and sequence
-                line_key = f"{code}_{sequence}"  # Unique key for each polyline
-                if line_key not in polylines:
-                    polylines[line_key] = {"layer": code, "points": []}
-                # Add this point to the group
-                x = float(point.get("Easting", 0))
-                y = float(point.get("Northing", 0))
-                z = float(point.get("Height", 0))
-                polylines[line_key]["points"].append((x, y, z))
-
-    return polylines
 
 def get_layer_from_pcode(pcode_list, code_layer_map):
     needed_layers = set()
@@ -504,7 +453,7 @@ def set_dxf_view(survey_ref):
     vp_width = max_x - min_x + 20
     cen_x = (max_x + min_x) / 2
     cen_y = (max_y + min_y) / 2
-    zoom_all = 2 # aspect ration of width/height for view box
+    zoom_all = 2  # desired aspect ratio of width/height for view box, need incase survey is wide but not high
     survey_aspect = vp_width / vp_height
     vp_heightrect = vp_height
     if survey_aspect > zoom_all:
@@ -516,14 +465,16 @@ def get_config(config_file):
         config = json.load(f)
     return config
 
-def save_config(config_file_ref, config_ref: dict):
+def save_config(config_file_ref, config_ref):
     with open(config_file_ref, 'w') as fh:
-        json.dump(config_ref, fh, indent=4)
+        json_string = json.dumps(config_ref, indent=4)  # Serialize dictionary to JSON string
+        with open(config_file_ref, 'w') as fh:  # Open file for writing
+            fh.write(json_string)  # Write string to the file
 
 
 if __name__ == "__main__":
     if __debug__:
-        library_file_path = "Global_v2.fxl"
+        library_file_path = "Global_v3.fxl"
         survey_file_path = "tr3.csv"
         output_dxf_path = "Output6.dxf"
     else:
@@ -554,13 +505,21 @@ if __name__ == "__main__":
         save_config(config_file, config)
 
     needed_pcodes = []
+    # Get info from FXL file
     layers = get_layers(library_file_path)
     point_code_dict, line_code_dict, code_layer_map = get_codes(library_file_path)
     point_codes = list(point_code_dict.keys())
     line_codes = list(line_code_dict.keys())
 
+    # Get survey using Line and Point Codes
     survey = get_survey(survey_file_path, point_codes, line_codes)
+
+    # Set up the DXF view based on survey coordinates
     set_dxf_view(survey)
-    polylines = group_line_points(survey, line_code_dict)
-    needed_layers = get_layer_from_pcode(needed_pcodes, code_layer_map) # get layer names using pcodes
-    create_dxf(output_dxf_path, layers, survey, point_codes, point_code_dict, line_codes, line_code_dict, needed_layers)
+
+    # find which layers need to be inserted in the DXF and the attributes they require
+
+    needed_layers = get_layer_from_pcode(needed_pcodes, code_layer_map)
+
+    # add survey items to DXF
+    create_dxf(output_dxf_path, layers, survey, point_code_dict, line_code_dict, needed_layers)

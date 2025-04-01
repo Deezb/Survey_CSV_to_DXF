@@ -7,6 +7,7 @@ from ezdxf.math import Vec2
 from ezdxf.render import ARROWS
 import csv
 import re
+import sys
 
 namespace = '{http://trimble.com/schema/fxl}'
 doc = ezdxf.new(dxfversion="R2010")
@@ -70,6 +71,10 @@ POINTCODE_TO_TEXT = {
     'wmf_sd': 'S.D.',
     'wmf_tp': 'Tee',
 }
+
+
+def is_debug_mode():
+    return sys.gettrace() is not None
 
 
 # this adds a multileader with a single arrow/text.
@@ -186,7 +191,7 @@ def process_code(input_string: str, line_codes_ref, point_codes_ref) -> (bool, s
     code = False # the point code extracted from the (from kb3 => get kb)
     differentiator = False # the number of this pointcode, for separating lines (from kb3 => get 3)
     if match:
-        code = match.group(1)  # Letters or alphanumeric code
+        code = match.group(1).lower()  # Letters or alphanumeric code, converted to lowercase
         differentiator = match.group(2)  # Number at the end
         if code in line_codes_ref:
             found = True
@@ -228,11 +233,11 @@ def get_codes(file_path):
         if f'{namespace}FeatureDefinitions' in child.tag:
             for gchild in child:
                 if f'{namespace}PointFeatureDefinition' in gchild.tag:
-                    point_code = gchild.attrib.get('Code')
+                    point_code = gchild.attrib.get('Code').lower()
                     point_code_dict_ref.setdefault(point_code, gchild.attrib)
                     code_layer_map_ref.setdefault(point_code, gchild.attrib.get('Layer'))
                 if f'{namespace}LineFeatureDefinition' in gchild.tag:
-                    line_code = gchild.attrib.get('Code')
+                    line_code = gchild.attrib.get('Code').lower()
                     line_code_dict_ref.setdefault(line_code, gchild.attrib)
                     code_layer_map_ref.setdefault(line_code, gchild.attrib.get('Layer'))
     return point_code_dict_ref, line_code_dict_ref, code_layer_map_ref
@@ -363,8 +368,8 @@ def create_dxf(output_dxf_path, layers, survey, point_codes_dict, line_codes_dic
                 layer_color = MAP_RGB_TO_CAD.get(layers[layer]['Color'], 7)
         else:
             layer_color = 7
-
-        doc.layers.add(layer, linetype="Continuous", color=int(layer_color))
+        if layer not in ["0"]:
+            doc.layers.add(layer, linetype="Continuous", color=int(layer_color))
 
     # start processing survey lines to dxf
 
@@ -473,11 +478,14 @@ def save_config(config_file_ref, config_ref):
 
 
 if __name__ == "__main__":
-    if __debug__:
+    debugging = is_debug_mode()
+    if debugging:
         library_file_path = "Global_v3.fxl"
         survey_file_path = "tr3.csv"
         output_dxf_path = "Output6.dxf"
     else:
+        print("not ",debugging)
+
         config_file = "./config.json"
         config = get_config(config_file)
 

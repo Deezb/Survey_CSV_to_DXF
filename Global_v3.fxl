@@ -1,0 +1,1356 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--This file represents feature coding definitions-->
+<FeatureCodingDefinitions CreationDate="2025-01-17T19:21:49.5835304+00:00" DateModified="2025-02-03T22:20:46.2246995+00:00" SchemaVersion="9" xmlns="http://trimble.com/schema/fxl">
+  <LineStyleDefinitions Version="3.0" xmlns="http://trimble.com/schema/linestyle">
+    <LineStyleDefinition Name="Solid" Description="">
+      <Units Reference="Ground" Length="Metric" />
+      <PatternType>Default</PatternType>
+      <Pattern TotalLength="10000.000000" EndLength="0.000000">
+        <Line Color="Empty" LineWeight="1">
+          <Location X="0.000000" Y="0.000000" />
+          <Location X="10000.000000" Y="0.000000" />
+        </Line>
+      </Pattern>
+    </LineStyleDefinition>
+  </LineStyleDefinitions>
+  <SymbolDefinitions Version="2" xmlns="http://trimble.com/schema/symbol">
+    <SymbolDefinition Name="Cross">
+      <Units Reference="Paper" Length="Metric" />
+      <Scale Size="Variable" Shape="Fixed" />
+      <Rotation Type="Allow" />
+      <Dimension First="Length" Second="Length" />
+      <Color Name="BlueViolet" Red="138" Green="43" Blue="226" />
+      <Component Number="1" Name="Cross">
+        <Line Color="BlueViolet" LineWeight="1">
+          <Location X="-2.000000" Y="-2.000000" />
+          <Location X="2.000000" Y="2.000000" />
+        </Line>
+        <Line Color="BlueViolet" LineWeight="1">
+          <Location X="-2.000000" Y="2.000000" />
+          <Location X="2.000000" Y="-2.000000" />
+        </Line>
+      </Component>
+      <Component Number="2" Name="" />
+    </SymbolDefinition>
+  </SymbolDefinitions>
+  <LabelStyles SchemaVersion="1" xmlns="http://trimble.com/schema/labelstyle">
+    <LineLabelStyles>
+      <LineLabelStyle Name="Standard" Description="Line Label Style" Gap="2.5" LineSpacing="1.5" Layer="0" TextStyle="Standard">
+        <LineLabels>
+          <LineLabel xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://trimble.com/schema/linelabel">
+            <Type>LineDistance</Type>
+            <Prefix />
+            <Units>ProjectSetting</Units>
+            <Precision>ProjectSetting</Precision>
+            <Angle>ProjectSetting</Angle>
+            <Offset>1</Offset>
+            <Along>0.5</Along>
+          </LineLabel>
+          <LineLabel xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://trimble.com/schema/linelabel">
+            <Type>LineAzimuthBearing</Type>
+            <Prefix />
+            <Units>ProjectSetting</Units>
+            <Precision>ProjectSetting</Precision>
+            <Angle>ProjectSetting</Angle>
+            <Offset>-1</Offset>
+            <Along>0.5</Along>
+          </LineLabel>
+          <LineLabel xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://trimble.com/schema/linelabel">
+            <Type>ArcDistance</Type>
+            <Prefix />
+            <Units>ProjectSetting</Units>
+            <Precision>ProjectSetting</Precision>
+            <Angle>ProjectSetting</Angle>
+            <Offset>1</Offset>
+            <Along>0.5</Along>
+          </LineLabel>
+          <LineLabel xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://trimble.com/schema/linelabel">
+            <Type>ArcChordAzimuthBearing</Type>
+            <Prefix />
+            <Units>ProjectSetting</Units>
+            <Precision>ProjectSetting</Precision>
+            <Angle>ProjectSetting</Angle>
+            <Offset>-1</Offset>
+            <Along>0.5</Along>
+          </LineLabel>
+          <LineLabel xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://trimble.com/schema/linelabel">
+            <Type>ArcRadius</Type>
+            <Prefix />
+            <Units>ProjectSetting</Units>
+            <Precision>ProjectSetting</Precision>
+            <Angle>ProjectSetting</Angle>
+            <Offset>-2</Offset>
+            <Along>0.5</Along>
+          </LineLabel>
+        </LineLabels>
+      </LineLabelStyle>
+    </LineLabelStyles>
+    <PointLabelStyles>
+      <PointLabelStyle Name="Standard" Description="Point Label Style" LabelAttributeValuesOnly="false" LabelAttributesVertically="false" AlignToSegment="false" Rotation="0" Gap="2.5" LineSpacing="1.5" Layer="0" TextStyle="Standard">
+        <PointLabels>
+          <PointLabel xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://trimble.com/schema/pointlabel">
+            <Type>Name</Type>
+            <SymbolSize>0</SymbolSize>
+            <UseNumberGroupSeparator>false</UseNumberGroupSeparator>
+            <Prefix />
+            <Units>ProjectSetting</Units>
+            <Precision>ProjectSetting</Precision>
+            <Angle>ProjectSetting</Angle>
+            <Offset>1</Offset>
+            <Position>Right</Position>
+          </PointLabel>
+          <PointLabel xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://trimble.com/schema/pointlabel">
+            <Type>Elevation</Type>
+            <SymbolSize>0</SymbolSize>
+            <UseNumberGroupSeparator>false</UseNumberGroupSeparator>
+            <Prefix />
+            <Units>ProjectSetting</Units>
+            <Precision>ProjectSetting</Precision>
+            <Angle>ProjectSetting</Angle>
+            <Offset>0</Offset>
+            <Position>Right</Position>
+          </PointLabel>
+        </PointLabels>
+      </PointLabelStyle>
+    </PointLabelStyles>
+    <PolygonLabelStyles>
+      <PolygonLabelStyle Name="Standard" Description="Polygon Label Style" Rotation="0" Gap="2.5" LineSpacing="1.5" Layer="0" TextStyle="Standard">
+        <PolygonLabels>
+          <PolygonLabel xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://trimble.com/schema/polygonlabel">
+            <Type>Name</Type>
+            <Prefix />
+            <Units>ProjectSetting</Units>
+            <Precision>ProjectSetting</Precision>
+            <Angle>ProjectSetting</Angle>
+            <Offset>0</Offset>
+            <Position>Center</Position>
+          </PolygonLabel>
+          <PolygonLabel xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://trimble.com/schema/polygonlabel">
+            <Type>Area</Type>
+            <Prefix />
+            <Units>ProjectSetting</Units>
+            <Precision>ProjectSetting</Precision>
+            <Angle>ProjectSetting</Angle>
+            <Offset>-1</Offset>
+            <Position>Center</Position>
+          </PolygonLabel>
+        </PolygonLabels>
+      </PolygonLabelStyle>
+    </PolygonLabelStyles>
+    <TextStyleDefinition xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="Standard" Description="Text Style" xmlns="http://tempuri.org/TextStyleDefinition.xsd">
+      <TypeFace>Courier New</TypeFace>
+      <Bold>false</Bold>
+      <AutoFlip>false</AutoFlip>
+      <WhiteOut>false</WhiteOut>
+      <Italic>false</Italic>
+      <Underline>false</Underline>
+      <Justification>CenterMiddle</Justification>
+      <Height>5</Height>
+      <WidthFactor>1</WidthFactor>
+      <ObliqueAngle>0</ObliqueAngle>
+      <Unit>Paper</Unit>
+    </TextStyleDefinition>
+  </LabelStyles>
+  <LayerDefinitions>
+    <LayerDefinition>
+      <Name>0</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>true</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Bank_Bottom</Name>
+      <Color>FFFFA500</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Benches</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Bicycle_Stands</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Bins</Name>
+      <Color>FFFFFF00</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Bollards</Name>
+      <Color>FFFF0000</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Borehole</Name>
+      <Color>FFFF00FF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Bridges</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Building_Outlines</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Chambers</Name>
+      <Color>FFFF0000</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Channels</Name>
+      <Color>FFFFFF00</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Concrete</Name>
+      <Color>FFD3D3D3</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Control</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Control_Stickers</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Culverts</Name>
+      <Color>FFFFFF00</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Ducting</Name>
+      <Color>FF800080</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>EIR_Poles</Name>
+      <Color>FF00FF00</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>ESB_LV</Name>
+      <Color>FFFF00FF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>50</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>ESB_MV</Name>
+      <Color>FFFF0000</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>100</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>ESB_OHLines</Name>
+      <Color>FFFF0000</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>ESB_Poles</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>ESB_UG_Lines</Name>
+      <Color>FFFF0000</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>30</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Fences</Name>
+      <Color>FF804000</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Floor_Levels</Name>
+      <Color>FF000040</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Gates</Name>
+      <Color>FF00FF00</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Gulleys</Name>
+      <Color>FF0000A0</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Headwalls</Name>
+      <Color>FF0080FF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Hedges</Name>
+      <Color>FF008000</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-DIMENSION</Name>
+      <Color>FFFF003F</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-FOUL</Name>
+      <Color>FFFF7F00</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-FOUL-EX</Name>
+      <Color>FFADADAD</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-FOUL-TXT</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-Street-Names</Name>
+      <Color>FF3F00FF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-SURFACE</Name>
+      <Color>FF009926</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-SURFACE-EX</Name>
+      <Color>FFADADAD</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-SURFACE-TXT</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-SYMBOL</Name>
+      <Color>FF0000FF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-SYMBOL_av</Name>
+      <Color>FF0000FF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-SYMBOL_bend</Name>
+      <Color>FF0000FF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-SYMBOL_dc</Name>
+      <Color>FF0000FF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-SYMBOL_fh</Name>
+      <Color>FF0000FF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-SYMBOL_fm</Name>
+      <Color>FF0000FF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-SYMBOL_mc</Name>
+      <Color>FF0000FF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-SYMBOL_rd</Name>
+      <Color>FF0000FF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-SYMBOL_sc</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-SYMBOL_scv</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-SYMBOL_sd</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-SYMBOL_sv</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-SYMBOL_tp</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-SYMBOL_wh</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-SYMBOL_wld</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-SYMBOL_wo</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-SYMBOL-TXT</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-WATER</Name>
+      <Color>FF003FFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-WATER_di</Name>
+      <Color>FF003FFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-WATER_pe</Name>
+      <Color>FF003FFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-WATER-EX</Name>
+      <Color>FFADADAD</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>IW-WATER-TXT</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Joint_Pits</Name>
+      <Color>FF0000FF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Paths</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Paving</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Point_Levels</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Points</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>true</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Points_WM</Name>
+      <Color>FFFFA500</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Pole_Stay_Wires</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Pubic_Light_Ducts</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Pubic_Light_Poles</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Reinstatement_Field</Name>
+      <Color>FF008000</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Reinstatement_Footpaths</Name>
+      <Color>FFADADAD</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Reinstatement_Road</Name>
+      <Color>FF808080</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Reinstatement_Verge</Name>
+      <Color>FF00FF00</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>ROAD</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>ROAD_kerbtop</Name>
+      <Color>FFFF0000</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>ROAD_tar</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>ROAD_White_Lines</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>ROAD_Yellow_Lines</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>SI_Trench</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Signs</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Spare Point Codes</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>SPARE_CODE_LINES</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Steps</Name>
+      <Color>FFFF0000</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Tanks</Name>
+      <Color>FF000040</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Traffic_Light_Ducts</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Traffic_Light_Poles</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Transition_Pits</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+    <LayerDefinition>
+      <Name>Walls</Name>
+      <Color>FFFFFFFF</Color>
+      <LineStyleName>Solid</LineStyleName>
+      <LineWeight>0</LineWeight>
+      <ProtectLayer>false</ProtectLayer>
+      <LayerGroup>&lt;&lt;None&gt;&gt;</LayerGroup>
+      <DisplayPriority>64</DisplayPriority>
+      <Print>true</Print>
+    </LayerDefinition>
+  </LayerDefinitions>
+  <ControlCodeDefinitions>
+    <ControlCodeDefinition Type="EndCurve" Description="Curve End" Code="CE" />
+    <ControlCodeDefinition Type="StartCurve" Description="Curve Start" Code="CS" />
+  </ControlCodeDefinitions>
+  <FeatureDefinitions>
+    <PointFeatureDefinition Code="wmf_av" Name="Air Valve" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-SYMBOL_av" PointLabelStyle="">
+      <Attributes>
+        <StringAttribute Name="Size" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </PointFeatureDefinition>
+    <LineFeatureDefinition Code="bb" Name="Bank Bottom" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Bank_Bottom" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="Bank_Bottom" />
+    <LineFeatureDefinition Code="bench" Name="Benches" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Benches" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="Benches" />
+    <LineFeatureDefinition Code="bike" Name="Bicycle Stands" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Bicycle_Stands" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="Bicycle_Stands" />
+    <PointFeatureDefinition Code="bin" Name="Bins" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Bins" PointLabelStyle="" />
+    <PointFeatureDefinition Code="bol" Name="Bollards" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Bollards" PointLabelStyle="" />
+    <PointFeatureDefinition Code="boreh" Name="Borehole" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Borehole" PointLabelStyle="">
+      <Attributes>
+        <StringAttribute Name="Name" Description="Reference Name" EntryMethod="Optional" IsLabelVisible="true" />
+        <StringAttribute Name="Diameter" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </PointFeatureDefinition>
+    <PointFeatureDefinition Code="wmf_bb" Name="Boundary Box" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-SYMBOL" PointLabelStyle="">
+      <Attributes>
+        <StringAttribute Name="Number" Description="Reference Number" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </PointFeatureDefinition>
+    <LineFeatureDefinition Code="brg" Name="Bridges" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Bridges" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="Bridges" />
+    <LineFeatureDefinition Code="buildg" Name="Building_Outlines" Category="GLOBAL" IncludeInSurface="false" Color="FE000000" Layer="Building_Outlines" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="Building_Outlines" />
+    <LineFeatureDefinition Code="chmb" Name="Chambers" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Chambers" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="Chambers">
+      <Attributes>
+        <StringAttribute Name="Owned By" Description="Utility company that owns the chamber" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </LineFeatureDefinition>
+    <LineFeatureDefinition Code="chnl" Name="Channels" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Channels" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="Channels" />
+    <LineFeatureDefinition Code="conc" Name="Concrete" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Concrete" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="Concrete" />
+    <PointFeatureDefinition Code="wmf_conn" Name="Connection Point" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-SYMBOL" PointLabelStyle="" />
+    <PointFeatureDefinition Code="STN" Name="Control Survey Station" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Control" PointLabelStyle="" />
+    <PointFeatureDefinition Code="STNP" Name="Control Survey Sticker Point" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Control_Stickers" PointLabelStyle="" />
+    <LineFeatureDefinition Code="culv" Name="Culverts" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Culverts" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="Culverts">
+      <Attributes>
+        <StringAttribute Name="depth" Description="height to bottom of culvert from surveyed point" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </LineFeatureDefinition>
+    <PointFeatureDefinition Code="wmf_dc" Name="Dosing Chamber" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-SYMBOL_dc" PointLabelStyle="" />
+    <LineFeatureDefinition Code="duct" Name="Duct Lines" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Ducting" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="Ducting">
+      <Attributes>
+        <IntegerAttribute Name="Number" Description="Number of ducts in Trench" EntryMethod="Optional" IsLabelVisible="true" DefaultValue="1" />
+        <StringAttribute Name="Diameter" Description="Daimeter of Duct" EntryMethod="Optional" IsLabelVisible="true" DefaultValue="100mm" />
+        <StringAttribute Name="type" Description="EIR,ESB,VIRGIN etc.." EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </LineFeatureDefinition>
+    <PointFeatureDefinition Code="eir_pl" Name="EIR Poles" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="EIR_Poles" PointLabelStyle="" />
+    <PointFeatureDefinition Code="esb_jp" Name="ESB Joint Pit" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Joint_Pits" PointLabelStyle="" />
+    <LineFeatureDefinition Code="esb_lv" Name="ESB LV Line UG" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="ESB_LV" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="ESB_LV" />
+    <LineFeatureDefinition Code="esb_mv" Name="ESB MV Line UG" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="ESB_MV" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="ESB_MV" />
+    <LineFeatureDefinition Code="esb_oh" Name="ESB Overhead Lines" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="ESB_OHLines" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="ESB_OHLines" />
+    <PointFeatureDefinition Code="esb_pl" Name="ESB Poles" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="ESB_Poles" PointLabelStyle="" />
+    <PointFeatureDefinition Code="esb_tp" Name="ESB Transition Pits" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Transition_Pits" PointLabelStyle="" />
+    <LineFeatureDefinition Code="esb" Name="ESB Underground Line" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="ESB_UG_Lines" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="ESB_UG_Lines" />
+    <LineFeatureDefinition Code="fence" Name="Fences" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Fences" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="Fences" />
+    <PointFeatureDefinition Code="ffl" Name="Finished Floor Level" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Floor_Levels" PointLabelStyle="">
+      <Attributes>
+        <StringAttribute Name="Description/HouseNumber" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </PointFeatureDefinition>
+    <PointFeatureDefinition Code="wmf_fh" Name="Fire Hydrant" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-SYMBOL_fh" PointLabelStyle="" />
+    <PointFeatureDefinition Code="wmf_fm" Name="Flow Meter" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-SYMBOL_fm" PointLabelStyle="" />
+    <PointFeatureDefinition Code="fmh" Name="Foul Manhole AsBuilt" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-FOUL" PointLabelStyle="">
+      <Attributes>
+        <StringAttribute Name="Diameter" EntryMethod="Optional" IsLabelVisible="true" DefaultValue="1.20m" />
+        <StringAttribute Name="FMH Name" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </PointFeatureDefinition>
+    <LineFeatureDefinition Code="foul" Name="Foul Pipeline AsBuilt" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-FOUL" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="IW-FOUL">
+      <Attributes>
+        <DoubleAttribute Name="Diameter" Description="Internal Diameter of Pipeline" EntryMethod="Optional" IsLabelVisible="true" MinimumValue="-1.7976931348623157E+308" MaximumValue="1.7976931348623157E+308" />
+        <ListAttribute Name="Pipe Type" Description="Type of Pipe" EntryMethod="Optional" IsLabelVisible="true">
+          <ListItems>
+            <Item>SN4</Item>
+            <Item>SN8</Item>
+            <Item>Concrete</Item>
+          </ListItems>
+        </ListAttribute>
+      </Attributes>
+    </LineFeatureDefinition>
+    <PointFeatureDefinition Code="foultext" Name="Foul Pipelines AsBuilt details" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-FOUL-TXT" PointLabelStyle="">
+      <Attributes>
+        <StringAttribute Name="Foul Information Text" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </PointFeatureDefinition>
+    <LineFeatureDefinition Code="gate" Name="Gates" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Gates" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="Gates">
+      <Attributes>
+        <StringAttribute Name="Type" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </LineFeatureDefinition>
+    <PointFeatureDefinition Code="gy" Name="Gulleys" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Gulleys" PointLabelStyle="" />
+    <LineFeatureDefinition Code="hw" Name="Headwalls" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Headwalls" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="Headwalls" />
+    <LineFeatureDefinition Code="hedge" Name="Hedges" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Hedges" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="Hedges" />
+    <PointFeatureDefinition Code="wmf_marker" Name="Marker Post" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-SYMBOL-TXT" PointLabelStyle="">
+      <Attributes>
+        <StringAttribute Name="Description" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </PointFeatureDefinition>
+    <PointFeatureDefinition Code="wmf_mc" Name="Mixing Chamber" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-SYMBOL_mc" PointLabelStyle="" />
+    <PointFeatureDefinition Code="note" Name="Note about info for drawing. dims etc..." Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-DIMENSION" PointLabelStyle="">
+      <Attributes>
+        <StringAttribute Name="Description" Description="Record of some information" EntryMethod="Required" IsLabelVisible="true" />
+      </Attributes>
+    </PointFeatureDefinition>
+    <LineFeatureDefinition Code="path" Name="Path Edge" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Paths" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="Paths">
+      <Attributes>
+        <StringAttribute Name="Surface Type" Description="Description of Surface of Path" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </LineFeatureDefinition>
+    <LineFeatureDefinition Code="pav" Name="Paving" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Paving" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="Paving" />
+    <PointFeatureDefinition Code="pt" Name="Point Level (Spot Height)" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Point_Levels" PointLabelStyle="" />
+    <PointFeatureDefinition Code="ps" Name="Pole_Stay_Wires" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Pole_Stay_Wires" PointLabelStyle="" />
+    <LineFeatureDefinition Code="pl" Name="Public Lighting Ducting" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Pubic_Light_Ducts" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="Pubic_Light_Ducts" />
+    <PointFeatureDefinition Code="plp" Name="Public Lighting Pole" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Pubic_Light_Poles" PointLabelStyle="" />
+    <LineFeatureDefinition Code="rein_field" Name="Reinstatement - Field" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Reinstatement_Field" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="Reinstatement_Field" />
+    <LineFeatureDefinition Code="rein_fp" Name="Reinstatement - Footpath" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Reinstatement_Footpaths" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="Reinstatement_Footpaths">
+      <Attributes>
+        <ListAttribute Name="Footpath Surface Type" EntryMethod="Optional" IsLabelVisible="true">
+          <ListItems>
+            <Item>Concrete</Item>
+            <Item>Paving</Item>
+            <Item>Tar</Item>
+            <Item>Stone</Item>
+          </ListItems>
+        </ListAttribute>
+      </Attributes>
+    </LineFeatureDefinition>
+    <LineFeatureDefinition Code="rein_road" Name="Reinstatement - Road" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Reinstatement_Road" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="Reinstatement_Road">
+      <Attributes>
+        <ListAttribute Name="Road Surface Type" EntryMethod="Optional" IsLabelVisible="true">
+          <ListItems>
+            <Item>SMA</Item>
+            <Item>HRA</Item>
+            <Item>Surface Dress</Item>
+            <Item>Wearing Course</Item>
+            <Item>Concrete</Item>
+            <Item>Binder</Item>
+          </ListItems>
+        </ListAttribute>
+      </Attributes>
+    </LineFeatureDefinition>
+    <LineFeatureDefinition Code="rein_verge" Name="Reinstatement - Verge" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Reinstatement_Verge" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="Reinstatement_Verge" />
+    <LineFeatureDefinition Code="tar" Name="Road Tar Edge" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="ROAD_tar" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="ROAD_tar" />
+    <LineFeatureDefinition Code="rdw" Name="Road White Lines" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="ROAD_White_Lines" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="ROAD_White_Lines" />
+    <LineFeatureDefinition Code="rdy" Name="Road Yellow Lines" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="ROAD_Yellow_Lines" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="ROAD_Yellow_Lines" />
+    <PointFeatureDefinition Code="wmf_scmh" Name="Scour Chamber MH" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-SYMBOL_scv" PointLabelStyle="">
+      <Attributes>
+        <StringAttribute Name="Diameter" EntryMethod="Optional" IsLabelVisible="true" DefaultValue="1.20m" />
+      </Attributes>
+    </PointFeatureDefinition>
+    <PointFeatureDefinition Code="wmf_scv" Name="Scour Valve" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-SYMBOL_scv" PointLabelStyle="">
+      <Attributes>
+        <StringAttribute Name="Info/manufacturer/size" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </PointFeatureDefinition>
+    <PointFeatureDefinition Code="sign" Name="Sign Post" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Signs" PointLabelStyle="">
+      <Attributes>
+        <StringAttribute Name="Type of Sign" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </PointFeatureDefinition>
+    <LineFeatureDefinition Code="slit" Name="Site Investigation Trench" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="SI_Trench" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="SI_Trench">
+      <Attributes>
+        <StringAttribute Name="Trench Name" Description="Description used in Trench Record Sheet" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </LineFeatureDefinition>
+    <PointFeatureDefinition Code="wmf_sv" Name="Sluice Valve" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-SYMBOL_sv" PointLabelStyle="">
+      <Attributes>
+        <StringAttribute Name="Size" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </PointFeatureDefinition>
+    <LineFeatureDefinition Code="sprl" Name="Spare Lines" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="SPARE_CODE_LINES" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="SPARE_CODE_LINES">
+      <Attributes>
+        <StringAttribute Name="Description" EntryMethod="Optional" IsLabelVisible="true" />
+        <StringAttribute Name="OtherInfo" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </LineFeatureDefinition>
+    <PointFeatureDefinition Code="sprp" Name="Spare Point Code" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Spare Point Codes" PointLabelStyle="">
+      <Attributes>
+        <StringAttribute Name="Point Info" Description="Information about what you are trying to record" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </PointFeatureDefinition>
+    <PointFeatureDefinition Code="stmt" Name="Storm Information Text" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-SURFACE-TXT" PointLabelStyle="">
+      <Attributes>
+        <StringAttribute Name="Storm Information" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </PointFeatureDefinition>
+    <PointFeatureDefinition Code="stm_mh" Name="Storm Manhole AsBuilt" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-SURFACE" PointLabelStyle="">
+      <Attributes>
+        <StringAttribute Name="Diameter" EntryMethod="Optional" IsLabelVisible="true" DefaultValue="1.20m" />
+        <StringAttribute Name="Name" EntryMethod="Optional" IsLabelVisible="true" DefaultValue="SMH" />
+      </Attributes>
+    </PointFeatureDefinition>
+    <LineFeatureDefinition Code="stm" Name="Storm Water Pipelines AsBuilt" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-SURFACE" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="IW-SURFACE">
+      <Attributes>
+        <StringAttribute Name="Diameter" EntryMethod="Optional" IsLabelVisible="true" />
+        <ListAttribute Name="Pipe Type" EntryMethod="Optional" IsLabelVisible="true">
+          <ListItems>
+            <Item>Concrete</Item>
+            <Item>Twinwall</Item>
+            <Item>Wavin</Item>
+            <Item>Land Drainage Perforated</Item>
+            <Item>Land Drainage Solid</Item>
+          </ListItems>
+        </ListAttribute>
+      </Attributes>
+    </LineFeatureDefinition>
+    <PointFeatureDefinition Code="sn" Name="Street Names" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-Street-Names" PointLabelStyle="">
+      <Attributes>
+        <StringAttribute Name="Street Name" Description="Name of Street / Road" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </PointFeatureDefinition>
+    <PointFeatureDefinition Code="wmf_sc" Name="Swab Chamber" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-SYMBOL_sc" PointLabelStyle="" />
+    <LineFeatureDefinition Code="tank" Name="Tank Outline" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Tanks" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="Tanks">
+      <Attributes>
+        <StringAttribute Name="Description" EntryMethod="Optional" IsLabelVisible="true" />
+        <StringAttribute Name="Depth" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </LineFeatureDefinition>
+    <PointFeatureDefinition Code="wmf_tp" Name="Tee-Piece" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-SYMBOL_tp" PointLabelStyle="">
+      <Attributes>
+        <StringAttribute Name="MainPipeDiameter" EntryMethod="Optional" IsLabelVisible="true" />
+        <StringAttribute Name="Off Pipe Diameter" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </PointFeatureDefinition>
+    <LineFeatureDefinition Code="kerbtop" Name="Top of Kerb" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="ROAD_kerbtop" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="0" />
+    <LineFeatureDefinition Code="step" Name="Top of Step" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Steps" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="0" />
+    <LineFeatureDefinition Code="tf" Name="Traffic Light Ducts" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Traffic_Light_Ducts" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="Traffic_Light_Ducts">
+      <Attributes>
+        <StringAttribute Name="Diameter" EntryMethod="Optional" IsLabelVisible="true" />
+        <IntegerAttribute Name="Quantity" Description="Number of Ducts" EntryMethod="Optional" IsLabelVisible="true" DefaultValue="1" />
+      </Attributes>
+    </LineFeatureDefinition>
+    <PointFeatureDefinition Code="tfp" Name="Traffic Light Poles" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Traffic_Light_Poles" PointLabelStyle="" />
+    <LineFeatureDefinition Code="wall" Name="Walls" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="Walls" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="Walls">
+      <Attributes>
+        <StringAttribute Name="Wall Type" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </LineFeatureDefinition>
+    <PointFeatureDefinition Code="wmf_wo" Name="Washout Hydrant" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-SYMBOL_wo" PointLabelStyle="">
+      <Attributes>
+        <StringAttribute Name="Size" EntryMethod="Optional" IsLabelVisible="true" />
+        <StringAttribute Name="WeldNo" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </PointFeatureDefinition>
+    <PointFeatureDefinition Code="wmf_cover" Name="Watermain Cover" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="ROAD" PointLabelStyle="">
+      <Attributes>
+        <StringAttribute Name="Type" EntryMethod="Optional" IsLabelVisible="true" />
+        <StringAttribute Name="Size" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </PointFeatureDefinition>
+    <LineFeatureDefinition Code="wm_di" Name="Watermain DI AsBuilt" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-WATER" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="IW-WATER">
+      <Attributes>
+        <StringAttribute Name="Diameter" Description="Internal Diameter of Pipe" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </LineFeatureDefinition>
+    <LineFeatureDefinition Code="wm_e" Name="Watermain Existing" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-WATER-EX" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="IW-WATER-EX">
+      <Attributes>
+        <DoubleAttribute Name="External Diameter" EntryMethod="Optional" IsLabelVisible="true" MinimumValue="-1.7976931348623157E+308" MaximumValue="1.7976931348623157E+308" />
+        <StringAttribute Name="Type of Pipe" EntryMethod="Optional" IsLabelVisible="true" />
+        <DoubleAttribute Name="Cover" Description="Cover over top of Pipe to Ground Level" EntryMethod="Optional" IsLabelVisible="true" MinimumValue="-1.7976931348623157E+308" MaximumValue="1.7976931348623157E+308" />
+      </Attributes>
+    </LineFeatureDefinition>
+    <PointFeatureDefinition Code="wmf_bend" Name="Watermain Fitting Bend" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-SYMBOL_bend" PointLabelStyle="">
+      <Attributes>
+        <StringAttribute Name="Angle" EntryMethod="Optional" IsLabelVisible="true" />
+        <StringAttribute Name="WeldNo" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </PointFeatureDefinition>
+    <LineFeatureDefinition Code="wm_pe" Name="Watermain PE AsBuilt" Category="GLOBAL" IncludeInSurface="false" Color="FE000000" Layer="IW-WATER_pe" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="Points_WM">
+      <Attributes>
+        <StringAttribute Name="Diameter" EntryMethod="Optional" IsLabelVisible="true" />
+        <ListAttribute Name="SDR" EntryMethod="Optional" IsLabelVisible="true">
+          <ListItems>
+            <Item>11</Item>
+            <Item>17</Item>
+          </ListItems>
+        </ListAttribute>
+        <ListAttribute Name="Install Method" Description="Installation Method" EntryMethod="Optional" IsLabelVisible="true">
+          <ListItems>
+            <Item>HDDrilling</Item>
+            <Item>OpenCut</Item>
+          </ListItems>
+        </ListAttribute>
+      </Attributes>
+    </LineFeatureDefinition>
+    <LineFeatureDefinition Code="wm" Name="Watermain Pipe AsBuilt" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-WATER" FieldLineStyle="Solid" LineStyleName="Solid" LineStyleScale="1" LineLabelStyle="" PointLabelStyle="" PointLayer="IW-WATER">
+      <Attributes>
+        <ListAttribute Name="Pipe Type" EntryMethod="Optional" IsLabelVisible="true">
+          <ListItems>
+            <Item>PE</Item>
+            <Item>Ductile Iron</Item>
+            <Item>uPVC</Item>
+            <Item>Concrete</Item>
+          </ListItems>
+        </ListAttribute>
+        <StringAttribute Name="Diameter" EntryMethod="Optional" IsLabelVisible="true" />
+        <ListAttribute Name="SDR" EntryMethod="Optional" IsLabelVisible="true">
+          <ListItems>
+            <Item>N/A</Item>
+            <Item>11</Item>
+            <Item>17</Item>
+          </ListItems>
+        </ListAttribute>
+        <ListAttribute Name="LayingMethod" EntryMethod="Optional" IsLabelVisible="true">
+          <ListItems>
+            <Item>OpenCut</Item>
+            <Item>HDirectionalDrilling</Item>
+          </ListItems>
+        </ListAttribute>
+      </Attributes>
+    </LineFeatureDefinition>
+    <PointFeatureDefinition Code="wmf_rd" Name="Watermain Reducer" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-SYMBOL_rd" PointLabelStyle="">
+      <Attributes>
+        <StringAttribute Name="Sizes" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </PointFeatureDefinition>
+    <PointFeatureDefinition Code="wmf_sd" Name="Watermain Saddle" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-SYMBOL_sd" PointLabelStyle="">
+      <Attributes>
+        <StringAttribute Name="Size" EntryMethod="Optional" IsLabelVisible="true" />
+        <StringAttribute Name="WeldNo" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </PointFeatureDefinition>
+    <PointFeatureDefinition Code="wmf_wld" Name="Watermain Weld" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-SYMBOL_wld" PointLabelStyle="">
+      <Attributes>
+        <StringAttribute Name="WeldNo" EntryMethod="Optional" IsLabelVisible="true" />
+        <StringAttribute Name="WelderName" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </PointFeatureDefinition>
+    <PointFeatureDefinition Code="wmf_welder" Name="Welder Number" Category="GLOBAL" IncludeInSurface="true" Color="FE000000" Layer="IW-WATER-TXT" PointLabelStyle="">
+      <Attributes>
+        <StringAttribute Name="Welder Number" EntryMethod="Optional" IsLabelVisible="true" />
+        <StringAttribute Name="Dates welder was on site" EntryMethod="Optional" IsLabelVisible="true" />
+      </Attributes>
+    </PointFeatureDefinition>
+  </FeatureDefinitions>
+</FeatureCodingDefinitions>
